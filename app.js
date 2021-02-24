@@ -2,7 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const db = require("./models");
-const setupRoute = require('./routes/tutorial')
+const setupUserRoute = require('./routes/user')
+const setupAuthRoute = require('./routes/auth')
 
 const app = express();
 
@@ -27,9 +28,10 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
-// require("./routes/tutorial")(app);
+// require("./routes/user")(app);
 
-setupRoute(app)
+setupUserRoute(app)
+setupAuthRoute(app)
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
