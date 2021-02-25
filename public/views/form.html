@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From</title>
+</head>
+
+<body>
+    <!-- use POST method rather than GET method when handling sensitive data such as passwords, since it won't be displayed in the URL -->
+
+    <form action="/api/users" method="POST">
+
+        <label for="name">First name:</label><br>
+        <input type="text" name="name" placeholder="Enter Your First Name" maxlength="16" required><br>
+
+        <label for="surname">Surname:</label><br>
+        <input type="text" name="surname" placeholder="Enter Your Surname" maxlength="16" required><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" name="email" placeholder="Enter Your Email" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" placeholder="Enter Your Password" required><br>
+        <!-- 
+        <label for="password">Re-Enter Password:</label><br>
+        <input type="password" name="password" placeholder="Re-Enter Your Password" required><br> -->
+
+        <label for="phoneNumber">Phone Number:</label><br>
+        <input type="tel" name="phoneNumber" placeholder="Enter Your Phone Number" required><br>
+
+        <label for="age">Age:</label><br>
+        <input type="int" name="age" placeholder="Enter Your Age" min="1" required><br>
+
+        <label for="gender">Gender:</label><br>
+        Male: <input type="radio" name="gender" value="Male" required><br>
+        Female: <input type="radio" name="gender" value="Female"><br>
+
+        <label for="role">Are you here to request or offer a service:</label><br>
+        Offer:<input type="radio" name="role" value="Offer" required><br>
+        Request:<input type="radio" name="role" value="Request"><br>
+
+        <!-- <label for="role">How can you help: </label><br>
+        <input type="checkbox" name="role" id="role1" value="Shopping"><label for="role">Shopping</label>
+        <input type="checkbox" name="role" id="role2" value="Medicine"><label for="role">Medicine</label>
+        <input type="checkbox" name="role" id="role3" value="Gardening"><label for="role">Gardening</label><br> -->
+
+        <button type="submit" name="Submit">Submit</button>
+
+    </form>
+
+</body>
+
+</html>

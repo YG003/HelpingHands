@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From</title>
+</head>
+
+<body>
+    <!-- use POST method rather than GET method when handling sensitive data such as passwords, since it won't be displayed in the URL -->
+
+    <form action="/api/auth/login" method="POST">
+
+        <label for="email">Email:</label><br>
+        <input type="email" name="email" placeholder="Enter Your Email" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" placeholder="Enter Your Password" required><br>
+
+
+        <button type="submit" name="Submit">Submit</button>
+
+    </form>
+
+</body>
+
+</html>
