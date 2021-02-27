@@ -30,14 +30,11 @@ module.exports = (sequelize, Sequelize) => {
         role: {
             type: DataTypes.STRING,
         },
-        // uuid: {
-        //     type: Sequelize.UUID,
-        //     defaultValue: Sequelize.UUIDV4,
-        //     allowNull: false,
+        // userId: {
+        //     type: DataTypes.UUID,
+        //     defaultValue: DataTypes.UUIDV1,
         //     primaryKey: true
         // }
-
-
     }, {
         hooks: {
             beforeCreate: (user) => {
@@ -48,7 +45,9 @@ module.exports = (sequelize, Sequelize) => {
 
     });
     user.prototype.validPassword = async function (password) {
-        return bcrypt.compareSync(password, this.password);
+        const isValid = bcrypt.compareSync(password, this.password);
+        if (!isValid) throw new Error('invalid password')
+        return isValid
     }
 
     return user;

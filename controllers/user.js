@@ -46,3 +46,16 @@ exports.findOne = (req, res) => {
             });
         });
 };
+
+exports.getHeroes = async (req, res) => {
+    console.log("hello there")
+    const heroes = await User.findAll({
+        where: {
+            role: 'Offer'
+        }
+    }).catch(err => {
+        console.log('err =>', err)
+    })
+    console.log('values', heroes)
+    res.send(heroes)
+}

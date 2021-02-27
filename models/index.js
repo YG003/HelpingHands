@@ -21,5 +21,9 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.users = require("./user.js")(sequelize, Sequelize);
+db.requests = require("./request.js")(sequelize, Sequelize)
+
+db.requests.belongsToMany(db.users, { through: 'UserRequests' });
+
 
 module.exports = db;

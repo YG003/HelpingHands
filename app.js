@@ -4,6 +4,8 @@ const cors = require("cors");
 const db = require("./models");
 const setupUserRoute = require('./routes/user')
 const setupAuthRoute = require('./routes/auth')
+const setupRequestRoute = require('./routes/request')
+
 const path = require('path')
 const app = express();
 const engines = require('consolidate');
@@ -46,11 +48,16 @@ app.get('/login', function (req, res) {
 app.get('/account/:id', function (req, res) {
   res.render('account')
 })
-// require("./routes/user")(app);
+
+app.get('/heroes', function (req, res) {
+  res.render('heroes')
+})
+
 
 setupUserRoute(app)
 setupAuthRoute(app)
-// set port, listen for requests
+setupRequestRoute(app)
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

@@ -12,9 +12,12 @@ exports.login = async (req, res) => {
         throw new Error("boohoo unidentified email")
     }
 
-    await user.validPassword(req.body.password).catch(err => {
-        throw new Error("password is invalid")
+    await user.validPassword(req.body.password).then(isAuth => {
+        res.send("success")
+    }).catch(err => {
+        res.status(401).json({
+            message: 'please stop being silly and use the right password',
+            err
+        })
     })
-    console.log("doododoo")
-    res.send("success")
 };
