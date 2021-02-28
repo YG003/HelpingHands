@@ -6,12 +6,7 @@ const fullPath = location.pathname
 const paths = fullPath.split('/')
 const id = paths[2]
 
-
-console.log('paths ->', paths)
-
-//     / api / users / 1
-// console.log('here i am ->', path)
-
+// inject account info into container
 function injectAccountInfo(data) {
     const container = document.getElementById('account-container')
     for (const key in data) {
@@ -21,6 +16,7 @@ function injectAccountInfo(data) {
     }
 }
 
+// fetch account info
 fetch(`http://localhost:8080/api/users/${id}`)
     .then(response => {
         // console.log('hey mate ->', response.json())

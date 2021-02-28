@@ -6,7 +6,6 @@ const setupUserRoute = require('./routes/user')
 const setupAuthRoute = require('./routes/auth')
 const setupRequestRoute = require('./routes/request')
 
-const path = require('path')
 const app = express();
 const engines = require('consolidate');
 
@@ -32,7 +31,7 @@ db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
 });
 
-// simple route
+// main view routes
 app.get("/", (req, res) => {
   res.render('index')
 });
@@ -53,6 +52,10 @@ app.get('/heroes', function (req, res) {
   res.render('heroes')
 })
 
+app.get('/requests', function (req, res) {
+  res.render('requests')
+})
+
 
 setupUserRoute(app)
 setupAuthRoute(app)
@@ -65,3 +68,7 @@ app.listen(PORT, () => {
 
 
 module.exports = app;
+
+
+
+//steps: home page, signup, login, account, get heroes(offer account), create request(in postman), get request

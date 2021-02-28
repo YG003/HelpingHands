@@ -1,8 +1,9 @@
+// databse config
 module.exports = {
     HOST: "localhost",
     USER: "root",
     PASSWORD: "6544",
-    DB: "testdb",
+    DB: "testdb2",
     dialect: "mysql",
     pool: {
         max: 5,

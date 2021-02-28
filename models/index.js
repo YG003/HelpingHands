@@ -1,6 +1,8 @@
 const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
+
+// sequelize instance which we use to create models and set associations 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
     dialect: dbConfig.dialect,
@@ -16,14 +18,21 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 
 const db = {};
 
-
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.users = require("./user.js")(sequelize, Sequelize);
-db.requests = require("./request.js")(sequelize, Sequelize)
+// importing models and setting them up passing through the sequelize instance
+db.users = require("./user.js")(sequelize);
+db.requests = require("./request.js")(sequelize)
 
-db.requests.belongsToMany(db.users, { through: 'UserRequests' });
+// building the association between the user and requests
+db.users.hasMany(db.requests);
 
 
 module.exports = db;
+
+// sequelize instance + db config
+// Model
+// controller
+// router
+// view

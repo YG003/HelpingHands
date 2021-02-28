@@ -1,7 +1,9 @@
 const bcrypt = require("bcrypt");
 const { DataTypes } = require("sequelize");
 
-module.exports = (sequelize, Sequelize) => {
+
+// user model
+module.exports = (sequelize) => {
     const user = sequelize.define("user", {
         name: {
             type: DataTypes.STRING
@@ -30,12 +32,8 @@ module.exports = (sequelize, Sequelize) => {
         role: {
             type: DataTypes.STRING,
         },
-        // userId: {
-        //     type: DataTypes.UUID,
-        //     defaultValue: DataTypes.UUIDV1,
-        //     primaryKey: true
-        // }
     }, {
+        // activates as the user is created and hashes the password before saving in db
         hooks: {
             beforeCreate: (user) => {
                 const salt = bcrypt.genSaltSync();
@@ -44,6 +42,9 @@ module.exports = (sequelize, Sequelize) => {
         },
 
     });
+    //read prototypes
+
+    // declaring a proto on instances of user so that we can use in the auth controller
     user.prototype.validPassword = async function (password) {
         const isValid = bcrypt.compareSync(password, this.password);
         if (!isValid) throw new Error('invalid password')

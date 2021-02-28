@@ -47,8 +47,10 @@ exports.findOne = (req, res) => {
         });
 };
 
+// controller which gets all users that have the role type 'offer'
 exports.getHeroes = async (req, res) => {
     console.log("hello there")
+    // find all heroes with the 'offer' role
     const heroes = await User.findAll({
         where: {
             role: 'Offer'
@@ -56,6 +58,5 @@ exports.getHeroes = async (req, res) => {
     }).catch(err => {
         console.log('err =>', err)
     })
-    console.log('values', heroes)
     res.send(heroes)
 }
